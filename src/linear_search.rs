@@ -1,4 +1,4 @@
-pub fn linear_search(haystack: &Vec<u64>, needle: u64) -> bool {
+pub fn linear_search<T: PartialEq>(haystack: &Vec<T>, needle: T) -> bool {
     for n in haystack {
         if *n == needle {
             return true;
@@ -10,11 +10,10 @@ pub fn linear_search(haystack: &Vec<u64>, needle: u64) -> bool {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::{u64, vec};
 
     #[test]
     fn alg_linear_search() {
-        let haystack: Vec<u64> = vec![
+        let haystack: Vec<i64> = vec![
             1, 3, 4, 25, 37, 69, 71, 81, 90, 99, 420, 1225, 2568, 12365, 63421,
         ];
         assert_eq!(linear_search(&haystack, 1), true);

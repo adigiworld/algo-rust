@@ -1,4 +1,9 @@
-pub fn binary_search(haystack: &Vec<u64>, needle: u64) -> bool {
+// type search = PartialEq + PartialOrd;
+// pub fn binary_search<T: PartialEq + std::cmp::PartialOrd>(haystack: &Vec<T>, needle: T) -> bool {
+pub fn binary_search<T>(haystack: &Vec<T>, needle: T) -> bool
+where
+    T: PartialEq + std::cmp::PartialOrd,
+{
     let mut low: usize = 0;
     let mut hig: usize = haystack.len();
     while low < hig {
@@ -17,7 +22,6 @@ pub fn binary_search(haystack: &Vec<u64>, needle: u64) -> bool {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::{u64, vec};
 
     #[test]
     fn alg_binary_search() {
